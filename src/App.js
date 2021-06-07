@@ -1,10 +1,11 @@
 import React from "react";
-import Post from "./Post";
-import Comments from "./Comments";
+import Post from "./components/Post";
+import Comments from "./components/Comments";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Profile from "./Profile";
-import Users from "./User";
-import UserProfile from "./UsersProfile";
+import Profile from "./components/Profile";
+import Users from "./components/User";
+import UserProfile from "./components/UsersProfile";
+import "./App.css";
 
 export default function App() {
   return (

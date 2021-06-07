@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./App.css";
+
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
