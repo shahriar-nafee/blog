@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function User() {
   const [users, setUsers] = useState();
   const [search, setSearch] = useState("");
+  const [sort,setSort] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,14 +30,34 @@ export default function User() {
         </Link>
       </div>
       <div className="mb-2">
-        <input
-          type="text"
-          placeholder="search..."
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
+        <span>
+        
+          <input
+            type="text"
+            placeholder="search..."
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+         
+        </span>
+        
+        <span className="float-right">
+          
+          <label className="mr-2">Sorting:</label>
+          <select onChange={(e) => {
+              setSort(e.target.value);
+            }}>
+            <option>Select</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+          
+          
+        </span>
+        
       </div>
+      
       <h3>Users Information:</h3>
       {users && (
         <table class="table mt-2">
@@ -65,6 +86,16 @@ export default function User() {
                   item.website.toLowerCase().includes(search.toLowerCase())
                 ) {
                   return item;
+                }
+              })
+              .sort((a,b)=>{
+                if(sort==="asc"){
+                  return(a.name<b.name ? -1:1)
+                  
+                }
+                else if(sort==="desc"){
+                  return(a.name<b.name ? 1:-1)
+                  
                 }
               })
               .map((item, index) => (
