@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "./components/Navbar";
 import Post from "./components/Post";
 import Comments from "./components/Comments";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -10,6 +11,7 @@ import "./App.css";
 export default function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Post} />
         <Route exact path="/profile" component={Profile} />

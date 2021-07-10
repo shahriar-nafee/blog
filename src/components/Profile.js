@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 export default function Profile() {
   const [id, setId] = useState();
@@ -67,14 +66,9 @@ export default function Profile() {
     setShowForm(false);
   };
   return (
-    <div>
-      <div className="container">
-        <div className="d-flex justify-content-center mt-3">
-          <Link to="/">
-            <button className="btn btn-info">Home</button>
-          </Link>
-        </div>
-        <div className="task-header d-flex justify-content-between pl-5 pr-5">
+    <div className="jumbotron">
+      <div className="container mt-5">
+        <div className="task-header d-flex">
           <h2 className="text-center">My Posts</h2>
         </div>
         {showForm && (
@@ -118,12 +112,12 @@ export default function Profile() {
             if (item.userId === 2)
               return (
                 <div className="row mt-5 item" key={item.id}>
-                  <div className="col-10">
+                  <div className="col-md-10">
                     <p>No. {index + 1}</p>
                     <h5>Title: {item.title}</h5>
                     <h6>Description: {item.body}</h6>
                   </div>
-                  <div className="col-2 align-self-center">
+                  <div className="col-md-2 align-self-center text-center p-2">
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(item.id, item)}
