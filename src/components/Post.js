@@ -3,7 +3,8 @@ import axios from "axios";
 
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 function Post() {
   let history = useHistory();
@@ -71,7 +72,7 @@ function Post() {
           </button>
         </div>
         {showForm && (
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mt-3">
             <div className="col-md-8 bg-light p-4">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
@@ -99,26 +100,48 @@ function Post() {
             </div>
           </div>
         )}
-        {post &&
-          post.slice(0, visible).map((item, index) => (
-            <div className="row mt-5 item" key={item.id}>
-              <div className="col-md-10">
-                <p>No. {index + 1}</p>
-                <h4>Title: {item.title}</h4>
-                <h5>Description: {item.body}</h5>
+        <div className="row mt-5">
+          {post &&
+            post.slice(0, visible).map((item, index) => (
+              // <div className="row mt-5 item" key={item.id}>
+              //   <div className="col-md-10">
+              //     <p>No. {index + 1}</p>
+              //     <h4>Title: {item.title}</h4>
+              //     <h5>Description: {item.body}</h5>
+              //   </div>
+              //   <div className="col-md-2 text-center align-self-center p-2">
+              //     <button
+              //       className="btn btn-warning ml-2"
+              //       onClick={() => {
+              //         history.push(`/comments/${item.id}`);
+              //       }}
+              //     >
+              //       Details
+              //     </button>
+              //   </div>
+              // </div>
+              <div className="col-md-6 mt-3">
+                <Card style={{ width: "100%", height: "100%" }} key={item.id}>
+                  <Card.Body>
+                    <Card.Title>{item.title}</Card.Title>
+                    <Card.Text>{item.body}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer>
+                    <div className="text-center">
+                      <button
+                        className="btn btn-warning"
+                        onClick={() => {
+                          history.push(`/comments/${item.id}`);
+                        }}
+                      >
+                        Details
+                      </button>
+                    </div>
+                  </Card.Footer>
+                </Card>
               </div>
-              <div className="col-md-2 text-center align-self-center p-2">
-                <button
-                  className="btn btn-warning ml-2"
-                  onClick={() => {
-                    history.push(`/comments/${item.id}`);
-                  }}
-                >
-                  Details
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+        </div>
         <button
           className="btn btn-block btn-primary mt-5 mb-5"
           onClick={handleLoadButton}

@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Topbar from "./components/Navbar";
 import Post from "./components/Post";
 import Comments from "./components/Comments";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -7,18 +7,20 @@ import Profile from "./components/Profile";
 import Users from "./components/User";
 import UserProfile from "./components/UsersProfile";
 import "./App.css";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
     <Router>
-      <Navbar />
+      <Topbar />
       <Switch>
         <Route exact path="/" component={Post} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/users" component={Users} />
-        <Route exact path="/userprofile/:userId" component={UserProfile} />
-        <Route exact path="/comments/:postid" component={Comments} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/users" component={Users} />
+        <Route path="/userprofile/:userId" component={UserProfile} />
+        <Route path="/comments/:postid" component={Comments} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

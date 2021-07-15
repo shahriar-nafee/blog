@@ -25,18 +25,19 @@ export default function User() {
   return (
     <div className="jumbotron">
       <div className="container mt-5">
-        <div>
-          <span>
+        <div className="row mb-2">
+          <div className="col-8">
+            <label className="mr-2">Search:</label>
             <input
               type="text"
-              placeholder="search..."
+              placeholder="search users..."
               onChange={(e) => {
                 setSearch(e.target.value);
               }}
             />
-          </span>
+          </div>
 
-          <span className="float-right">
+          <div className="col-4">
             <label className="mr-2">Sorting:</label>
             <select
               onChange={(e) => {
@@ -47,12 +48,12 @@ export default function User() {
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
-          </span>
+          </div>
         </div>
 
         <h3>Users Information:</h3>
         {users && (
-          <div>
+          <div className="table-responsive">
             <table className="table">
               <thead className="thead-dark">
                 <tr>

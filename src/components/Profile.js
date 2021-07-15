@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { Card } from "react-bootstrap";
 
 export default function Profile() {
   const [id, setId] = useState();
@@ -111,26 +112,27 @@ export default function Profile() {
           mypost.map((item, index) => {
             if (item.userId === 2)
               return (
-                <div className="row mt-5 item" key={item.id}>
-                  <div className="col-md-10">
-                    <p>No. {index + 1}</p>
-                    <h5>Title: {item.title}</h5>
-                    <h6>Description: {item.body}</h6>
-                  </div>
-                  <div className="col-md-2 align-self-center text-center p-2">
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleDelete(item.id, item)}
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="btn btn-primary ml-2"
-                      onClick={() => handleUpdate(item.id)}
-                    >
-                      Update
-                    </button>
-                  </div>
+                <div className="mt-5" key={item.id}>
+                  <Card style={{ width: "100%" }}>
+                    <Card.Body>
+                      <Card.Title>{item.title}</Card.Title>
+                      <Card.Text>{item.body}</Card.Text>
+                      <div className="text-center">
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => handleDelete(item.id, item)}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          className="btn btn-primary ml-2"
+                          onClick={() => handleUpdate(item.id)}
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </Card.Body>
+                  </Card>
                 </div>
               );
           })}
