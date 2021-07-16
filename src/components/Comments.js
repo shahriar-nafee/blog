@@ -40,7 +40,7 @@ export default function Comments() {
 
   return (
     <div className="jumbotron">
-      <div className="container">
+      <div className="container mt-5">
         <Card style={{ width: "100%" }}>
           {post && (
             <>
@@ -68,24 +68,6 @@ export default function Comments() {
             </>
           )}
         </Card>
-        {/* {post && (
-          <div className="post mt-3 p-2">
-            <h3>User Id: {post.userId}</h3>
-            <h4>Title: {post.title}</h4>
-            <h5>Description: {post.body}</h5>
-          </div>
-        )}
-        {comment &&
-          comment.map((item, index) => (
-            <div className="item m-5 p-2" key={item.id}>
-              <h5>Comment: {item.body}</h5>
-              <p>
-                Name: {item.name}
-                <br></br>
-                Email: {item.email}
-              </p>
-            </div>
-          ))} */}
       </div>
     </div>
   );

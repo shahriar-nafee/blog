@@ -26,9 +26,10 @@ export default function User() {
     <div className="jumbotron">
       <div className="container mt-5">
         <div className="row mb-2">
-          <div className="col-8">
+          <div className="col-6">
             <label className="mr-2">Search:</label>
             <input
+              style={{ width: "120px" }}
               type="text"
               placeholder="search users..."
               onChange={(e) => {
@@ -37,7 +38,7 @@ export default function User() {
             />
           </div>
 
-          <div className="col-4">
+          <div className="col-6 text-right">
             <label className="mr-2">Sorting:</label>
             <select
               onChange={(e) => {

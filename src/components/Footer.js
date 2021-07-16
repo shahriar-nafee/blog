@@ -17,10 +17,10 @@ function Footer(props) {
             <Link to="#">Help Center</Link>
           </li>
           <li>
-            <Link to="#">Help Forum</Link>
+            <Link to="#">Privacy</Link>
           </li>
           <li>
-            <Link to="#">Blogger Buzz</Link>
+            <Link to="#">Terms of Service</Link>
           </li>
         </div>
 

@@ -64,7 +64,7 @@ function Post() {
   return (
     <div className="jumbotron">
       <div className="container container-fluid">
-        <div className="task-header d-flex justify-content-between pl-5 pr-5 mt-5">
+        <div className="task-header d-flex justify-content-between mt-5">
           <h2 className="text-center">All Posts</h2>
 
           <button className="btn btn-primary" onClick={handleClick}>
@@ -102,24 +102,7 @@ function Post() {
         )}
         <div className="row mt-5">
           {post &&
-            post.slice(0, visible).map((item, index) => (
-              // <div className="row mt-5 item" key={item.id}>
-              //   <div className="col-md-10">
-              //     <p>No. {index + 1}</p>
-              //     <h4>Title: {item.title}</h4>
-              //     <h5>Description: {item.body}</h5>
-              //   </div>
-              //   <div className="col-md-2 text-center align-self-center p-2">
-              //     <button
-              //       className="btn btn-warning ml-2"
-              //       onClick={() => {
-              //         history.push(`/comments/${item.id}`);
-              //       }}
-              //     >
-              //       Details
-              //     </button>
-              //   </div>
-              // </div>
+            post.slice(0, visible).map((item) => (
               <div className="col-md-6 mt-3">
                 <Card style={{ width: "100%", height: "100%" }} key={item.id}>
                   <Card.Body>
