@@ -4,7 +4,7 @@ function FooterPages() {
   return (
     <div className="jumbotron">
       <div
-        style={{ height: "50vh" }}
+        style={{ height: "70vh" }}
         className="container container-fluid mt-5 "
       >
         <h4>Page in Progress</h4>
