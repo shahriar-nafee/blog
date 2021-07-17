@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Footer(props) {
+function Footer() {
   return (
     <div className="footer">
       <div className="container">
@@ -10,17 +10,14 @@ function Footer(props) {
         </div>
 
         <div className="footeritem col-lg-4 col-md-8 justify-content-between">
-          {/* <li>
-            <Link to="/">Home</Link>
-          </li> */}
           <li>
-            <Link to="#">Help Center</Link>
+            <Link to="/privacy">Help Center</Link>
           </li>
           <li>
-            <Link to="#">Privacy</Link>
+            <Link to="/privacy">Privacy</Link>
           </li>
           <li>
-            <Link to="#">Terms of Service</Link>
+            <Link to="/privacy">Terms of Service</Link>
           </li>
         </div>
 

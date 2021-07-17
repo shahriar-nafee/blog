@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";
 import Users from "./components/User";
 import UserProfile from "./components/UsersProfile";
-import "./App.css";
 import Footer from "./components/Footer";
+import "./App.css";
+import FooterPages from "./components/FooterPages";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/users" component={Users} />
         <Route path="/userprofile/:userId" component={UserProfile} />
         <Route path="/comments/:postid" component={Comments} />
+        <Route path="/privacy" component={FooterPages} />
       </Switch>
       <Footer />
     </Router>
