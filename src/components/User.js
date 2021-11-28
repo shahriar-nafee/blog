@@ -29,8 +29,9 @@ export default function User() {
           <div className="col-6">
             <label className="mr-2">Search:</label>
             <input
-              style={{ width: "120px" }}
+              style={{ maxWidth: "140px" }}
               type="text"
+              className="form-control-sm"
               placeholder="search users..."
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -44,6 +45,8 @@ export default function User() {
               onChange={(e) => {
                 setSort(e.target.value);
               }}
+              className="form-control-sm"
+              style={{ maxWidth: "140px" }}
             >
               <option>Select</option>
               <option value="asc">Ascending</option>
@@ -91,7 +94,7 @@ export default function User() {
                     }
                   })
                   .map((item, index) => (
-                    <tr>
+                    <tr key={item.id}>
                       <th scope="row">{index + 1}</th>
                       <td>
                         <Link to={`/userprofile/${item.id}`}>{item.name}</Link>

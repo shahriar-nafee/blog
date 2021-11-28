@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 export default function Comments() {
@@ -53,17 +52,12 @@ export default function Comments() {
               </Card.Body>
               {comment &&
                 comment.map((item) => (
-                  <>
-                    {/* {item.name}: {item.body} */}
-                    <ListGroup className="list-group-flush">
-                      <ListGroupItem>
-                        <label className="font-weight-bold">
-                          {item.email} :
-                        </label>
-                        {item.body}
-                      </ListGroupItem>
-                    </ListGroup>
-                  </>
+                  <ListGroup className="list-group-flush" key={item.id}>
+                    <ListGroupItem className="mt-2">
+                      <label className="font-weight-bold">{item.email} :</label>
+                      {item.body}
+                    </ListGroupItem>
+                  </ListGroup>
                 ))}
             </>
           )}

@@ -9,8 +9,8 @@ import { Card } from "react-bootstrap";
 function Post() {
   let history = useHistory();
   const [data, setData] = useState({
-    Title: "",
-    Description: "",
+    title: "",
+    body: "",
   });
   const [post, setPost] = useState();
   const [visible, setVisible] = useState(10);
@@ -53,7 +53,9 @@ function Post() {
     axios
       .post("https://jsonplaceholder.typicode.com/posts", data)
       .then((res) => {
-        alert(JSON.stringify(res.data));
+        const temp = post.slice();
+        temp.unshift(res.data);
+        setPost(temp);
       })
       .catch((err) => {
         console.log(`err`, err);
@@ -77,25 +79,27 @@ function Post() {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                   className="form-control"
-                  name="Title"
+                  name="title"
                   placeholder="Post Title"
                   ref={register({ required: true })}
                   onChange={(e) => handleInput(e)}
                 />{" "}
                 <br></br>
                 <span className="text-danger">
-                  {errors.Title && "Post Title is required"}
+                  {errors.title && "Post Title is required"}
                 </span>
                 <textarea
                   className="form-control"
-                  name="Description"
+                  name="body"
                   placeholder="Description"
                   ref={register({ required: true })}
                   onChange={(e) => handleInput(e)}
                 />{" "}
-                {errors.Priority && "Description is required"}
+                <span className="text-danger">
+                  {errors.description && "Description is required"}
+                </span>
                 <br></br>
-                <input className="btn btn-success" type="submit" />
+                <input className="btn btn-success mt-2" type="submit" />
               </form>
             </div>
           </div>
@@ -103,8 +107,8 @@ function Post() {
         <div className="row mt-5">
           {post &&
             post.slice(0, visible).map((item) => (
-              <div className="col-md-6 mt-3">
-                <Card style={{ width: "100%", height: "100%" }} key={item.id}>
+              <div className="col-md-6 mt-3" key={item.id}>
+                <Card style={{ width: "100%", height: "100%" }}>
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
                     <Card.Text>{item.body}</Card.Text>

@@ -15,7 +15,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("https://jsonplaceholder.typicode.com/posts")
+        .get("https://jsonplaceholder.typicode.com/posts/?userId=2")
         .then((response) => {
           setMypost(response.data);
         })
@@ -60,6 +60,7 @@ export default function Profile() {
       .put(`https://jsonplaceholder.typicode.com/posts/${id}`, data)
       .then((res) => {
         alert(JSON.stringify(res.data));
+        const temp = mypost.slice();
       })
       .catch((err) => {
         console.log(`err`, err);
@@ -109,32 +110,31 @@ export default function Profile() {
         )}
 
         {mypost &&
-          mypost.map((item, index) => {
-            if (item.userId === 2)
-              return (
-                <div className="mt-5" key={item.id}>
-                  <Card style={{ width: "100%" }}>
-                    <Card.Body>
-                      <Card.Title>{item.title}</Card.Title>
-                      <Card.Text>{item.body}</Card.Text>
-                      <div className="text-center">
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => handleDelete(item.id, item)}
-                        >
-                          Delete
-                        </button>
-                        <button
-                          className="btn btn-primary ml-2"
-                          onClick={() => handleUpdate(item.id)}
-                        >
-                          Update
-                        </button>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </div>
-              );
+          mypost.map((item) => {
+            return (
+              <div className="mt-5" key={item.id}>
+                <Card style={{ width: "100%" }}>
+                  <Card.Body>
+                    <Card.Title>{item.title}</Card.Title>
+                    <Card.Text>{item.body}</Card.Text>
+                    <div className="text-center">
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDelete(item.id, item)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="btn btn-primary ml-2"
+                        onClick={() => handleUpdate(item.id)}
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
           })}
       </div>
     </div>
